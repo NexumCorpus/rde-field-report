@@ -54,7 +54,7 @@ git clone https://github.com/NexumCorpus/recursive-discovery-engine && cd recurs
 python scripts/regrade_frozen_bar.py > ../regrade.out     # ~1 min; prints to stdout only
 cmp ../regrade.out ../rde-field-report/verification/evidence/frozen_bar_regrade.txt   # silent = byte-identical
 python scripts/reproduce.py                                # ~3 min, no API keys, deterministic backend
-python -m venv ../venv && ../venv/bin/pip install pytest   # Windows: ..env\Scripts\pip
+python -m venv ../venv && ../venv/bin/pip install pytest   # Windows: ../venv/Scripts/pip
 ../venv/bin/python -m pytest -q                            # ~15 min, 170 tests
 ```
 
