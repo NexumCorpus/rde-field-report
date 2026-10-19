@@ -13,7 +13,7 @@ benchmark lost on a freshly drawn hold-out family (flagged overfit). The essay r
 
 ```
 git clone https://github.com/NexumCorpus/rde-field-report && cd rde-field-report
-python verification/verify.py --root 05dd1bc5403a381e3f5c36335b97b8c6417fcd36c4611acddab81ecd7f8a0d40
+python verification/verify.py --root 1acdd256c9e889ee5d95871c1e9228907d71c6aeaccf9eab353a465f3716c9b2
 ```
 
 Python 3.8+, standard library only, offline. Expected output:
@@ -22,8 +22,8 @@ Python 3.8+, standard library only, offline. Expected output:
 INTEGRITY: PASS
 RECOMPUTE: PASS
 REPLAY: PASS (20 essay claims checked against the evidence)
-ROOT: 05dd1bc5403a381e3f5c36335b97b8c6417fcd36c4611acddab81ecd7f8a0d40
-ROOT CHECK: PASS (published root 05dd1bc5403a381e3f5c36335b97b8c6417fcd36c4611acddab81ecd7f8a0d40)
+ROOT: 1acdd256c9e889ee5d95871c1e9228907d71c6aeaccf9eab353a465f3716c9b2
+ROOT CHECK: PASS (published root 1acdd256c9e889ee5d95871c1e9228907d71c6aeaccf9eab353a465f3716c9b2)
 VERDICT: VERIFIED (root matches the published root)
 ```
 
