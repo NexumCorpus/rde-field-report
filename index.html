@@ -122,6 +122,28 @@
   .end-note{ font-size:8.8pt; color:var(--faint); border-top:1px solid var(--rule); margin-top:.3in; padding-top:.12in; }
   .drop::first-letter{ font-size:2.4em; font-weight:800; color:var(--accent); float:left;
         line-height:.84; padding:.04em .08em 0 0; font-family:"Segoe UI",sans-serif; }
+  /* screen reading: a centred column of comfortable width; print layout above is unchanged */
+  @media screen{
+    html{ background:#f4f5f8; }
+    body{ max-width:46rem; margin:0 auto; padding:3rem 1.5rem 5rem; background:#fff;
+          font-size:18px; line-height:1.65; min-height:100vh; box-shadow:0 0 0 1px #e3e6ee; }
+    .cover{ height:auto; display:block; margin-bottom:3rem; }
+    .cover-title{ font-size:2.6rem; }
+    .cover-sub{ font-size:1.25rem; margin:1.2rem 0 0; }
+    .cover-thesis{ font-size:1.05rem; margin:1.6rem 0 0; max-width:none; }
+    .cover-meta{ font-size:.85rem; margin-top:2rem; padding-top:.8rem; }
+    section{ margin-top:3.5rem; }
+    h2{ font-size:1.7rem; margin:0 0 1rem; }
+    table{ font-size:.85rem; display:block; overflow-x:auto; }
+    .facts .f span{ font-size:.8rem; }
+    .end-note{ font-size:.85rem; margin-top:2.5rem; padding-top:.8rem; }
+    pre, code{ overflow-wrap:anywhere; }
+  }
+  @media screen and (max-width:600px){
+    body{ padding:1.5rem 1rem 3rem; font-size:17px; }
+    .cover-title{ font-size:2rem; }
+    .facts{ grid-template-columns:1fr; }
+  }
 </style>
 </head>
 <body>
