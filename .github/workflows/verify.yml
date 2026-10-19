@@ -1,0 +1,17 @@
+name: verify
+on: [push, pull_request]
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.8", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python verification/verify.py --root dd929036a94a7064542c30d03c2e9111c93e805f60bb9f94f06aa13ed281cbd8
+      - run: python verification/selftest.py

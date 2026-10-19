@@ -1,0 +1,87 @@
+{
+  "run_id": "20260702_011106_cache_eviction_llm",
+  "domain": "cache_eviction",
+  "backend": "llm",
+  "status": "accepted",
+  "utility_adaptive": {
+    "beats_human": 0,
+    "matches_human": 0,
+    "below_human": 1
+  },
+  "utility_static": {
+    "beats_human": 0,
+    "matches_human": 0,
+    "below_human": 1
+  },
+  "op_utility_adaptive": {
+    "clock_approx": "below_human"
+  },
+  "op_utility_static": {
+    "clock_approx": "below_human"
+  },
+  "incomplete": {},
+  "human_baseline_incomplete": [],
+  "incoherent": null,
+  "recommended": "i2.v1_policy_clock_approx_c4: recall=0.74 mem=6KB",
+  "recommended_grade": {
+    "static": "below_human",
+    "static_margin": -0.0806,
+    "adaptive": "below_human",
+    "adaptive_margin": -0.0891
+  },
+  "frontier_hypervolume": 0.5429,
+  "frontier_points": [
+    {
+      "id": "i1.0_llm",
+      "recall": 0.639,
+      "mem_KB": 1
+    },
+    {
+      "id": "seed_lru",
+      "recall": 0.686,
+      "mem_KB": 3
+    },
+    {
+      "id": "i2.v1_policy_clock_approx_c4",
+      "recall": 0.743,
+      "mem_KB": 6
+    }
+  ],
+  "benchmark_version": "v11-multiseed",
+  "n_graded": 1,
+  "selection_factor": 1.25,
+  "fragile": {
+    "clock_approx": false
+  },
+  "sensitivity": {
+    "clock_approx": {
+      "0.0": "below_human",
+      "0.25": "below_human",
+      "0.5": "below_human",
+      "1.0": "below_human"
+    }
+  },
+  "robust_beats": [],
+  "holdout": {},
+  "behavioral_distance": {
+    "clock_approx": {
+      "nearest": "lfu_bump_both_4",
+      "distance": 0.0605
+    }
+  },
+  "exposed_on": {
+    "clock_approx": [
+      "adv_loop"
+    ]
+  },
+  "mechanisms": {
+    "clock_approx": "reads {ins, la}; branchless"
+  },
+  "booleans": {
+    "any_robust_beats": false,
+    "all_robust_beats_are_adaptive": false,
+    "any_winner_exposed": false,
+    "any_fragile_winner": false
+  },
+  "template_hash": "04a7798f150b3741"
+}

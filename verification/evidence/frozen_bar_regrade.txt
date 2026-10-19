@@ -1,0 +1,27 @@
+FROZEN BAR (benchmark v11-multiseed, S=5; n_graded=10, selection_factor=1.830; eps_beats=0.0183)
+static front: [(0.689, 3200), (0.824, 6400)]
+adaptive front: [(0.637, 2000), (0.771, 2400), (0.832, 4800), (0.897, 8000), (0.93, 9600)]
+
+op                    origin        cap  wCR     static          adaptive        robust  fragile
+ad_thrash             det-template  c4   0.8669   beats +0.0434   beats +0.0349  False   False
+                      sweep: {0.0: 'below', 0.25: 'beats', 0.5: 'beats', 1.0: 'beats'}
+ad_guard15            det-template  c4   0.8911   beats +0.0676   beats +0.0591  False   False
+                      sweep: {0.0: 'matches', 0.25: 'beats', 0.5: 'beats', 1.0: 'beats'}
+rec_logf              det-template  c4   0.8413  matches +0.0178  matches +0.0093  False   True
+                      sweep: {0.0: 'below', 0.25: 'matches', 0.5: 'matches', 1.0: 'matches'}
+rec_plus_f            det-template  c4   0.8400  matches +0.0165  matches +0.0080  False   True
+                      sweep: {0.0: 'below', 0.25: 'matches', 0.5: 'matches', 1.0: 'matches'}
+adaptive_hotset       v9-LLM        c4   0.8726   beats +0.0492   beats +0.0407  False   False
+                      sweep: {0.0: 'below', 0.25: 'beats', 0.5: 'beats', 1.0: 'beats'}
+adaptive_mixguard     v9-LLM        c4   0.8840   beats +0.0605   beats +0.0520  False   False
+                      sweep: {0.0: 'below', 0.25: 'beats', 0.5: 'beats', 1.0: 'beats'}
+adaptive_freq_guard   v9-LLM        c4   0.8727   beats +0.0492   beats +0.0407  False   False
+                      sweep: {0.0: 'below', 0.25: 'beats', 0.5: 'beats', 1.0: 'beats'}
+warm_freq_bias        v10-LLM       c4   0.8409  matches +0.0174  matches +0.0090  False   True
+                      sweep: {0.0: 'below', 0.25: 'matches', 0.5: 'matches', 1.0: 'matches'}
+hybrid_hot_guard      v10-LLM       c4   0.8723   beats +0.0488   beats +0.0404  False   False
+                      sweep: {0.0: 'below', 0.25: 'beats', 0.5: 'beats', 1.0: 'beats'}
+adaptive_freq_stick   v10-LLM       c4   0.8572   beats +0.0337   beats +0.0252  False   True
+                      sweep: {0.0: 'below', 0.25: 'beats', 0.5: 'beats', 1.0: 'beats'}
+
+SUMMARY: 7/10 beats_adaptive_human under the frozen bar; 0/10 robust_beats (all charge points); fragile: ['rec_logf', 'rec_plus_f', 'warm_freq_bias', 'adaptive_freq_stick']
