@@ -13,5 +13,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
-      - run: python verification/verify.py --root 5653ad220b0b1ceb6fdc4716b62e30d3330a29b5673b0fde877df5583af8558e
+      - run: python verification/verify.py --root 05dd1bc5403a381e3f5c36335b97b8c6417fcd36c4611acddab81ecd7f8a0d40
       - run: python verification/selftest.py
