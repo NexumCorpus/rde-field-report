@@ -24,7 +24,7 @@ def run(case):
             p = copy / f
             t = p.read_text(encoding="utf-8")
             assert t.count(edit[0]) == 1, f"selftest edit target not found once in {f}"
-            p.write_text(t.replace(edit[0], edit[1]), encoding="utf-8", newline="\n")
+            p.write_bytes(t.replace(edit[0], edit[1]).encode("utf-8"))  # write_text(newline=) needs 3.10
             subprocess.run([sys.executable, "-I", str(copy / "verification" / "make_manifest.py")],
                            check=True, capture_output=True)
         # always the ORIGINAL verifier, never the copy's

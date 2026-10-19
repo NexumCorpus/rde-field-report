@@ -45,14 +45,32 @@ Linux and Windows, Python 3.8 and 3.13.
 
 ## Going further: re-run the engine
 
-The code is public at [NexumCorpus/recursive-discovery-engine](https://github.com/NexumCorpus/recursive-discovery-engine).
-From a fresh clone (2026-10-19), `python scripts/regrade_frozen_bar.py` printed a file byte-identical to
-`verification/evidence/frozen_bar_regrade.txt`, and `python scripts/reproduce.py` re-runs the cited v11 run (about
-3 minutes, no API keys; deterministic backend) and diffs its claims against the cited one. Our fresh-clone run:
-`REPRODUCED: 24/24 headline fields identical`, and all 170 tests pass. One thing moves by design: the hold-out family
-is redrawn from a new seed each run, so its margins differ from the essay's (our redraw: ad_thrash −0.0795,
-ad_guard15 −0.0792, against the essay's −0.171 and −0.137). The verdict did not move: both winners lose and are flagged
-overfit again. The essay's margins are the cited run's draw, which the bundled claims file records with its seed.
+The verifier needs only Python 3.8+. The engine needs **Python 3.11+** and, for its tests, `pytest`. On Linux, use
+`python3` wherever these commands say `python`, and install pytest in a venv if your system pip is externally managed
+(PEP 668).
+
+```
+git clone https://github.com/NexumCorpus/recursive-discovery-engine && cd recursive-discovery-engine
+python scripts/regrade_frozen_bar.py > ../regrade.out     # ~1 min; prints to stdout only
+cmp ../regrade.out ../rde-field-report/verification/evidence/frozen_bar_regrade.txt   # silent = byte-identical
+python scripts/reproduce.py                                # ~3 min, no API keys, deterministic backend
+python -m venv ../venv && ../venv/bin/pip install pytest   # Windows: ..env\Scripts\pip
+../venv/bin/python -m pytest -q                            # ~15 min, 170 tests
+```
+
+On Windows, run these from Git Bash or `cmd`: PowerShell 5's `>` writes UTF-16, which breaks `cmp`.
+`reproduce.py` writes its run into `runs/<timestamp>_cache_eviction_deterministic` (gitignored).
+
+What we and one independent run got (2026-10-19):
+
+- Our fresh clone on Windows: regrade byte-identical, `REPRODUCED: 24/24 headline fields identical`, 170 tests pass.
+- A clean Ubuntu 24.04 VM, Python 3.13 ([record](https://github.com/NexumCorpus/rde-field-report/pull/1)): the same,
+  plus `sha256sum -c` on the manifest. It also found that `selftest.py` crashed on Python 3.8/3.9; fixed since.
+
+One thing moves by design: the hold-out family is redrawn from a new seed each run, so its margins differ from the
+essay's (our redraw: ad_thrash −0.0795, ad_guard15 −0.0792; the VM's: −0.0841, −0.0848; the essay's cited run: −0.171,
+−0.137). The verdict did not move: both winners lose and are flagged overfit every time. The essay's margins are the
+cited run's draw, which the bundled claims file records with its seed.
 
 ## What this does not claim
 
